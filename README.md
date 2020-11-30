@@ -1,5 +1,5 @@
 # ReactJS for Beginners
-
+# Lesson 1
 # What is ReactJS
 ReactJS is an open source javascript library, and is often used as the **V** in the **MVC (Model-View-Controller)**, as is a library for
 creating ***user interfaces***.
@@ -43,6 +43,7 @@ You can seamlessly integrate React into any of your applications, be it a portio
 
 Once you have a good grasp on React, you can start building mobile applications with React Native.
 
+# Lesson 2
 # Prerequisites to get started with React
 HTML, CSS and JavaScript fundamentals are absolutely necessary.
 
@@ -88,10 +89,35 @@ In this approach we install the **Create-react-app** package globally and then u
 npm install create-react-app -g
 create-react-app <project_name>
 ```
+
+# Lesson 3
+# Folder structure
+`package.json` file contains the dependencies and the scripts required for the project
+
+`node_modules` folder is the folder in which all the dependencies are installed, it is generated when you run `create-react-app` command or when you run `npm install`
+
+`public/index.html`, `index.html` is the only html you will have in your application, you are building single page application, and this is it, the view might dynamically change in the browser it is this `index.html` file that gets served up, and `index.html` contains the root dom node.
+
+Typically you will not add any code to `index.html`, maybe some changes in the head tag, but definitely **not** in the body tag. We want React to control the UI.
+
+And for that purpose we have **one** `div` tag with `id="root"` -> `<div id="root"></div>` - At one time the React application takes over this `div` tag and is ultimately responsible for the UI.
+
+`src` folder is the folder you will be working with the most during development, the starting point for your React application is `index.js`.
+
+In `index.js` you specify the root component which is the `App` component and the ***DOM*** element which will be controlled by React. The DOM element in this is an element with an `id` of `root`. 
+
+```
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+The `App` component is present in `App.js`, and `App.js` is responsible for the html displayed in the browser - In other words, the `App` component represents the view, which you see in the browser.
+
 # ReactJS_Tutorial
-
 # --------------------------------------------------------------------------------------------------------------------------------
-
 # Initialized readme content from Create-React-App
 
 # Getting Started with Create React App
