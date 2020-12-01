@@ -152,6 +152,12 @@ class Welcome extends React.Component{
 }
 ```
 
+# LESSON 5
+# Functional Components
+Functional components are just JavaScript functions, they can optionally receive an object of properties (props), and return html which describes the UI.
+The html is actually something known as **JSX**, bur for the sake of understanding it for now, we will call it html.
+
+
 
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
