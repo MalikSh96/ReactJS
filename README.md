@@ -116,6 +116,43 @@ ReactDOM.render(
 ```
 The `App` component is present in `App.js`, and `App.js` is responsible for the html displayed in the browser - In other words, the `App` component represents the view, which you see in the browser.
 
+# LESSON 4
+# Components
+In React a component represents a part of the UI. The component that contains all inner components is the **Root (App)** component. 
+
+Each of the inner components only describe a part of the UI, however all the components come together to make up the entire application.
+
+Components are also reusable, the same component can be used with different properties to display different information.
+
+# Component in code
+A component in code is usually placed in JavaScript file, for example `AppComponent` is placed in `App.js`.
+
+# Component types
+In React there exist 2 component types:
+
+1. Stateless Functional Component.
+
+Function component are literally JavaScript functions, they return html which describes the UI, for example:
+
+```
+function welcome(props){
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+2. Stateful class component
+
+Class components are regular ES6 classes that extend the component class from the React library, they must contain a ***render*** method which in turn returns html, for example:
+
+```
+class Welcome extends React.Component{
+  render(){
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
