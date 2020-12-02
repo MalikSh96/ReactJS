@@ -157,6 +157,32 @@ class Welcome extends React.Component{
 Functional components are just JavaScript functions, they can optionally receive an object of properties (props), and return html which describes the UI.
 The html is actually something known as **JSX**, bur for the sake of understanding it for now, we will call it html.
 
+# LESSON 6
+# Class Components
+Class components are basically ES6 classes, similar to a functional component, a class component also can optionally receive properties (props) as input, and return html (***jsx***). Apart from the props a class component can also maintain a **private** internal state, in simpler words it can maintain some information, which is private to that component and use that information to describe the UI.
+
+# Using Functional Component or Class Component
+**Functional Components**
+- Simple functions, receiving props and returning a declaration.
+
+- Try and use Functional Components as much as possible (if it is possible to use Functional or Class components, use always Functional).
+
+- **Advantage**: Absence of `this` keywordm which you will encounter in a **class** based component.
+
+- **Advantage**: You will be forced to think of a solution without using ***state***. For example, if you have a number of components, each with their own private ***state***, maintenance and debugging your application is kind of dificult. 
+
+- Functional components tend to be without any complicated logic and are mainly responsible for the UI. This is why Functional Components are called ***stateless/dumb/presentational*** components.
+
+**Class Components**
+- Is more feature rich.
+
+- They can maintain their own private data, which is also called ***state***.
+
+- They can contain complicated/complex UI logic.
+
+- They can provide life-cycle hooks.
+
+- Class components are called ***stateful/smart/container*** components.
 
 
 # ReactJS_Tutorial
