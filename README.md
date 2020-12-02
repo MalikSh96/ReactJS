@@ -200,7 +200,7 @@ JSX ultimately transpiles to pure JavaScript which is understood by the browsers
 
 Each JSX element is syntactic sugar for calling `React.createElement()`, and that is why you have to import the react library when you use JSX.
 
-`**Hello.js**` file
+**`Hello.js`** file
 ```
 import React from 'react';
 
