@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Greet from './components/Greet';
 import Welcome from './components/Welcome';
+import Hello from './components/Hello';
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
       {/* To include our Greet component, in this app component we simply specify
         the component as a custom hmtl tag */}
 
-      <Greet />
-      <Welcome />
+      {/* <Greet /> */}
+      {/* <Welcome /> */}
+      <Hello />
     </div>
   );
 }

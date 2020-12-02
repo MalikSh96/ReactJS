@@ -171,7 +171,7 @@ Class components are basically ES6 classes, similar to a functional component, a
 
 - **Advantage**: You will be forced to think of a solution without using ***state***. For example, if you have a number of components, each with their own private ***state***, maintenance and debugging your application is kind of dificult. 
 
-- Functional components tend to be without any complicated logic and are mainly responsible for the UI. This is why Functional Components are called ***stateless/dumb/presentational*** components.
+- Functional components tend to be without any complicated logic and are mainly responsible for the UI. 
 
 **Class Components**
 - Is more feature rich.
@@ -184,6 +184,57 @@ Class components are basically ES6 classes, similar to a functional component, a
 
 - Class components are called ***stateful/smart/container*** components.
 
+# LESSON 7
+# Using **Hooks**
+Hooks is a feature that lets you use state and other react features without writing a class, in other words you can use states in **Functional Components** aswell now.
+
+# LESSON 8
+# **JSX**
+**JavaScript XML (JSX)** is an extension to the JavaScript language syntax. With the react library, it is an extension to write xml-similar code for elements and components.
+
+JSX tags have a tag name, attributes and children.
+
+JSX is **not** a necessity for write React applications, but JSX makes your react code simpler and elegant.
+
+JSX ultimately transpiles to pure JavaScript which is understood by the browsers.
+
+Each JSX element is syntactic sugar for calling `React.createElement()`, and that is why you have to import the react library when you use JSX.
+
+`**Hello.js**` file
+```
+import React from 'react';
+
+//This is the JSX version of the Hello component
+// const Hello = () => {
+//     return (
+//         <div className='dummyClass'>
+//             <h1>Hello Malik Sharfo!</h1>
+//         </div>
+//     )
+// }
+
+const Hello = () => {
+    //createElement() accepts 3 parameters, at minimum
+    //1st parameter, a string which specifies the html tag to be rendered
+    //2nd parameter, we get to pass any optional props - Is an object of k/v pairs that will be applied to the element
+    //3rd parameter, is the children for the html element (in this case children for our 'div' tag)
+    //createElement() can accept any number of elements as children.
+    return React.createElement(
+        'div', 
+        {
+            id: 'hello',
+            className: 'dummyClass'
+        }, 
+        React.createElement('h1', null, 'Hello Malik, how are you?'));
+}
+
+export default Hello;
+```
+
+# JSX differences
+- `Class` replaced by `className`
+- `for` replaced by `htmlFor`
+- camelCase property naming convention (fx. onclick -> onClick, tabindex -> tabIndex)
 
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
