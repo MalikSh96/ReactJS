@@ -5,11 +5,18 @@ import React from 'react';
 //     return <h1>Hello Malik!</h1>
 // }
 
-const Greet = () => {
-    return <h1>
-            Hello Malik! 
-            <p>This is looking good</p>
-           </h1>
+const Greet = (props) => {
+    console.log(props);
+    return (
+        //we can only return one html element, so we have to enclose all of our content in one div wrapper tag
+        <div>
+            <h1>
+                Hello {props.name} a.k.a {props.heroName}!
+                {/* <p>This is looking good</p> */}
+            </h1>
+            {props.children}
+        </div>
+    )
 }
 
 export default Greet;

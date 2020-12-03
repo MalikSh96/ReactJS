@@ -236,6 +236,72 @@ export default Hello;
 - `for` replaced by `htmlFor`
 - camelCase property naming convention (fx. onclick -> onClick, tabindex -> tabIndex)
 
+# LESSON 9
+# Properties (props)
+Props is the optional input that your component can accept, it also allows the component to be dynamic.
+To specify props for a component you specify them as attributes.
+
+To specify a name property you add a `name` attribute, and to the attribute you assign the value.
+
+**`App.js`**
+```
+<Greet name='Souheib'/>
+<Greet name='Mack'/>
+<Greet name='Abdoulie'/>
+```
+**`Greet.js`**
+```
+const Greet = (props) => {
+    console.log(props);
+    return <h1>
+            Hello {props.name} a.k.a {props.heroName}! 
+            {/* <p>This is looking good</p> */}
+           </h1>
+}
+```
+So props is just an object that contains the attributes and the values which have been passed from the parent component.
+
+Sometimes it is also possible that you might not have an idea (hardcoded) as to what content is being passed in, what we want the component to render that unknown content. You can do that by specifying the content between the opnening and closing tags of the component and retrieving it using the ***reserved*** children property in the props object.
+
+For the properties you know for sure are going to be passed, you can pass them as attributes. If you have no clue what is going to be passed as props, or if you have to pass in dynamic html content, pass it **in** between the component tags, and in the component defintion simply render the content using `props.children`. If something is specified it is rendered in the browers and if nothing is passed `props.children` simply renders nothing.
+
+**`App.js`**
+```
+<Greet name='Malik' heroName='The marker'> 
+  <p>This is children props</p>
+</Greet>
+```
+
+**`Greet.js`**
+```
+const Greet = (props) => {
+  console.log(props);
+  return (
+    //we can only return one html element, so we have to enclose all of our content in one div wrapper tag
+    <div>
+      <h1>
+        Hello {props.name} a.k.a {props.heroName}!
+        {/* <p>This is looking good</p> */}
+      </h1>
+      {props.children}
+    </div>
+  )
+}
+```
+For props in **class** components, the props are available through **`this.props`** which is reserved in class components.
+
+```
+class Welcome extends Component {
+  render(){
+    return <h1>Welcome {this.props.name} a.k.a {this.props.heroName}!</h1>
+  }
+}
+```
+
+**All in all**, when specifying the components you can include additional attributes, react is going to bundle all such attributes into an object which **we/you** by convention call as **props**. In the component definition you can access any attribute you want to and render dynamic content.
+
+There is one **strict** rule that follows with props, and that is that props are **immutable**, or in simpler words their value can **not** be changed.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
