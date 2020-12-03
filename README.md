@@ -302,6 +302,27 @@ class Welcome extends Component {
 
 There is one **strict** rule that follows with props, and that is that props are **immutable**, or in simpler words their value can **not** be changed.
 
+# LESSON 10
+# State
+There is another way to influence what is rendered on the screen, and that is the **state** of the component.
+
+# Props vs State
+**Props**
+- Props gets passed to the component
+- Function parameters
+- Props are immutable (the parent owns the props and **can't** be changed by the children)
+- Props can be accessed using the `props` (functional components) and `this.props` (class component) parameters
+
+**State**
+- State is managed within the component
+- Variables declared within the function body
+- The component has full controll -> state **can** be changed
+- State can be accessed using the `useState` (functional components) Hook and `this.state` (class components)
+
+Ultimately both props and state holds information that influences the UI in the browser.
+
+A state is nothing but an object that is privately maintained inside a component, a state can influenced what is rendered in the browser, and lastly state can be changed within the component.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App

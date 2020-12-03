@@ -3,6 +3,7 @@ import './App.css';
 import Greet from './components/Greet';
 import Welcome from './components/Welcome';
 import Hello from './components/Hello';
+import Message from './components/Message';
 
 
 function App() {
@@ -22,10 +23,13 @@ function App() {
 
       <Greet name='Mack' heroName='The joker'/> */}
 
-      <Welcome name='Malik' heroName='The marker'/>
+      {/* <Welcome name='Malik' heroName='The marker'/>
       <Welcome name='Souheib' heroName='The sniper'/>
-      <Welcome name='Mack' heroName='The joker'/>
+      <Welcome name='Mack' heroName='The joker'/> */}
+
       {/* <Hello /> */}
+
+      <Message /> 
     </div>
   );
 }
