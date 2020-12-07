@@ -7,7 +7,12 @@ import React, { Component } from 'react';
 //2, the class has to implement the render method, which will return null or some html
 class Welcome extends Component {
     render(){
-        return <h1>Welcome {this.props.name} a.k.a {this.props.heroName}!</h1>
+        const {name, heroName} = this.props; ////we extract name and heroName property from the props object
+        /*^We are simply extracting the necessary props
+        Our props object could contain some more props, but we can destructure only the ones we wish to use
+        in our component
+        */
+        return <h1>Welcome {name} a.k.a {heroName}!</h1>
     }
 }
 

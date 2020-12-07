@@ -393,6 +393,65 @@ increment(){
 }
 ```
 
+# LESSON 12
+# Destructuring Props and State
+Destructuring is an ES6 feature that makes it possible to unpack values from arrays or properties from objects into distinct variables.
+
+In React destructuring props and state improves code readability, and you are also more likely find destructuring syntax' in most of the online material.
+
+**Functional** component:
+There are 2 ways to destructure props in a functional component.
+
+1. Destructuring it in the function parameter itself.
+
+```
+const Greet = (props) => { 
+  //some more code here
+
+}
+```
+**Destructured** to using `{}` braces 
+```
+const Greet = ({name, heroName}) => {
+  //some more code here
+
+}
+```
+In above you are extracting `name` and `heroName` from the `props` object
+
+2. Destructuring in the function body.
+
+```
+const Greet = (props) => {
+    // console.log(props);
+    const {name, heroName} = props; //we extract name and heroName property from the props object
+
+    //some more code here
+
+}
+```
+
+**Class** component:
+In **class** components you generally tend to destructure props/state in the render method
+
+```
+class Welcome extends Component {
+    render(){
+new line--> const {name, heroName} = this.props; ////we extract name and heroName property from the props object
+        /*^We are simply extracting the necessary props
+        Our props object could contain some more props, but we can destructure only the ones we wish to use
+        in our component
+        */
+        return <h1>Welcome {name} a.k.a {heroName}!</h1>
+    }
+}
+```
+
+For **`state`** properties you can destructure them in a similar way
+```
+const {state1, state2} = this.state;
+```
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App

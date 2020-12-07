@@ -6,15 +6,16 @@ import React from 'react';
 // }
 
 const Greet = (props) => {
-    console.log(props);
+    // console.log(props);
+    const {name, heroName} = props; //we extract name and heroName property from the props object
     return (
         //we can only return one html element, so we have to enclose all of our content in one div wrapper tag
         <div>
             <h1>
-                Hello {props.name} a.k.a {props.heroName}!
+                Hello {name} a.k.a {heroName}!
                 {/* <p>This is looking good</p> */}
             </h1>
-            {props.children}
+            {/* {props.children} */}
         </div>
     )
 }

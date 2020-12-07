@@ -16,22 +16,22 @@ function App() {
 
       {/* <Greet name='Malik' heroName='The marker'> 
         <p>This is children props</p>
-      </Greet>
+      </Greet> */}
       
-      <Greet name='Souheib' heroName='The sniper'>
+      {/* <Greet name='Souheib' heroName='The sniper'>
         <button>Action</button>
-      </Greet>
+      </Greet> */}
 
-      <Greet name='Mack' heroName='The joker'/> */}
+      {/* <Greet name='Mack' heroName='The joker'/> */}
 
-      {/* <Welcome name='Malik' heroName='The marker'/>
-      <Welcome name='Souheib' heroName='The sniper'/>
-      <Welcome name='Mack' heroName='The joker'/> */}
+      <Welcome name='Malik' heroName='The Observant'/>
+      {/* <Welcome name='Souheib' heroName='The sniper'/> */}
+      {/* <Welcome name='Mack' heroName='The joker'/> */}
 
       {/* <Hello /> */}
 
       {/* <Message />  */}
-      <Counter />
+      {/* <Counter /> */}
     </div>
   );
 }
