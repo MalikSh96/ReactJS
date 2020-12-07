@@ -357,6 +357,41 @@ class Message extends Component {
 export default Message;
 ```
 
+# LESSON 11
+# setState
+With `state` **never** modify the `state` directly, instead make use of `setState`. Because when you modify the `state` directly React will **not** re-render the component, `setState` on the other hand will let React know that it **has** to re-render the component.
+
+Calls to `setState` are asynchronous, so it can happen that a call will be made **before** the `state` has actually happened.
+To handle such situations, you can pass in a callback function as the 2nd parameter to the `setState` method.
+
+Whenever you **need** to execute some ***code*** **after** the `state` has been changed, do **not** place that ***code*** **right** after the `setState` method. Instead place the code **within** the callback function that is passed as the 2nd parameter to the `setState` method.
+
+Whenever you have to update the `state` based on the previous `state` you need to pass a function as an argument to the `setState` method instead of passing in an object.
+The function has access to the previous `state`, which can be used to calculate the ***new*** `state`.
+
+```
+increment(){
+        //To change the state of the component, we need to use setState
+        this.setState({
+            count: this.state.count + 1
+        }, () => {
+            console.log('Callback value', this.state.count);
+        });
+        console.log(this.state.count);
+}
+```
+**Changed** to
+```
+increment(){
+        //To change the state of the component, we need to use setState
+        //Here we are always using the previous state, and not the current state as in the code above^^^
+        this.setState( (prevState) => ({
+            count: prevState.count + 1
+        }));
+        console.log(this.state.count);
+}
+```
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
