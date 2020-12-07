@@ -167,7 +167,7 @@ Class components are basically ES6 classes, similar to a functional component, a
 
 - Try and use Functional Components as much as possible (if it is possible to use Functional or Class components, use always Functional).
 
-- **Advantage**: Absence of `this` keywordm which you will encounter in a **class** based component.
+- **Advantage**: Absence of `this` keyword which you will encounter in a **class** based component.
 
 - **Advantage**: You will be forced to think of a solution without using ***state***. For example, if you have a number of components, each with their own private ***state***, maintenance and debugging your application is kind of dificult. 
 
@@ -316,7 +316,7 @@ There is another way to influence what is rendered on the screen, and that is th
 **State**
 - State is managed within the component
 - Variables declared within the function body
-- The component has full controll -> state **can** be changed
+- The component has full control -> state **can** be changed
 - State can be accessed using the `useState` (functional components) Hook and `this.state` (class components)
 
 Ultimately both props and state holds information that influences the UI in the browser.
@@ -451,6 +451,67 @@ For **`state`** properties you can destructure them in a similar way
 ```
 const {state1, state2} = this.state;
 ```
+
+# LESSON 13
+# Event Handling
+Any web application you create typically tends to have user interaction, when the user interacts with your application **events** are fired.
+
+React **events** are named used camelCase rather than lowercase. And with **JSX** you pass a function as the ***event handler*** rather than a string: `<button onClick={clickHandler}>Click</button>`.
+
+In JavaScript it is possible to define one function inside another function, nesting functions.
+
+With ***event handling*** a common mistake can happen sometimes, it is when for example `onClick` you pass a function as the event handler. The function you pass has **no** `()` at the end of it `onClick={clickHandler}`, if you **do** add `()` it **becomes** a function **call**, and that is not what you want, you want the **handler** to be a function and **not** a function call.
+
+**This**
+```
+onClick={clickHandler}
+```
+**Not this**
+```
+onClick={clickHandler()}
+```
+
+The event handler **has** to be a function and **not** a function call.
+
+**Functional** component eventhandling:
+```
+import React from 'react'
+
+function FunctionClick() {
+    function clickHandler(){
+        console.log('Button clicked');
+    }
+    return (
+        <div>
+            <button onClick={clickHandler}>Click</button>
+        </div>
+    )
+}
+
+export default FunctionClick;
+```
+
+**Class** component eventhandling:
+```
+import React, { Component } from 'react'
+
+class ClassClick extends Component {
+    clickHandler(){
+        console.log('You clicked the button');
+    }
+    render() {
+        return (
+            <div>
+                <button onClick={this.clickHandler}>Click me</button>
+            </div>
+        )
+    }
+}
+
+export default ClassClick;
+```
+
+But all this is "simple" eventhandling for now, because you aren't doing much yet. But generally your eventhandlers tend to modify the `state` of the component using `this.setState` method, and when you try to do that it is **possible** that you can run into a whole world of confusion, all that confusion revolves around `this` keyword binding in JavaScript.
 
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------

@@ -5,6 +5,8 @@ import Welcome from './components/Welcome';
 import Hello from './components/Hello';
 import Message from './components/Message';
 import Counter from './components/Counter';
+import FunctionClick from './components/FunctionClick';
+import ClassClick from './components/ClassClick';
 
 
 function App() {
@@ -24,7 +26,7 @@ function App() {
 
       {/* <Greet name='Mack' heroName='The joker'/> */}
 
-      <Welcome name='Malik' heroName='The Observant'/>
+      {/* <Welcome name='Malik' heroName='The Observant'/> */}
       {/* <Welcome name='Souheib' heroName='The sniper'/> */}
       {/* <Welcome name='Mack' heroName='The joker'/> */}
 
@@ -32,6 +34,9 @@ function App() {
 
       {/* <Message />  */}
       {/* <Counter /> */}
+
+      {/* <FunctionClick /> */}
+      <ClassClick />
     </div>
   );
 }
