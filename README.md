@@ -369,6 +369,7 @@ Whenever you **need** to execute some ***code*** **after** the `state` has been 
 Whenever you have to update the `state` based on the previous `state` you need to pass a function as an argument to the `setState` method instead of passing in an object.
 The function has access to the previous `state`, which can be used to calculate the ***new*** `state`.
 
+**`Counter.js`**
 ```
 increment(){
         //To change the state of the component, we need to use setState
