@@ -513,6 +513,67 @@ export default ClassClick;
 
 But all this is "simple" eventhandling for now, because you aren't doing much yet. But generally your eventhandlers tend to modify the `state` of the component using `this.setState` method, and when you try to do that it is **possible** that you can run into a whole world of confusion, all that confusion revolves around `this` keyword binding in JavaScript.
 
+# LESSON 14
+# Binding Event Handlers
+The reason you bind **event handlers** in React is purely because of the way **`this`** keyword works in JavaScript. It is **not** because of how React works.
+
+`this` keyword is ***`undefined`*** in an **event handler** and that is the reason **event binding** is necessary in React Class components.
+
+There are a number of ways to bind **event handlers** in React.
+
+1. Using the `bind` keyword and bind the handler in the `render()` method.
+```
+render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                <button onClick={this.clickHandler.bind(this)}>Click This</button>
+            </div>
+        )
+}
+```
+Every ^ update to the `state` will cause the component to re-render, this in turn will generate a brand new **event handler** on every render. This impact ***could*** be troublesome in larger applications and components that contains nested children components.
+
+2. Using arrow functions in the `render()` method. The arrow function approach is simply calling the **event handler** in the arrow function body.
+```
+render() {
+        return (
+            <div>
+                <div>{this.state.message}</div>
+                {/* <button onClick={this.clickHandler.bind(this)}>Click This</button> */}
+                <button onClick={() => this.clickHandler()}>Click This</button>
+            </div>
+        )
+}
+```
+We are calling the **event handler** and returning that value, that is why `()` is required in this approach. But similar to first approach this also has performace implications in some scenarios.
+
+3. This approach deals by binding the **event handler** in the constructor. This approach is the most optimal one.
+```
+class EventBind extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             message: 'Hello!'
+        }
+
+        this.clickHandler = this.clickHandler.bind(this);
+}
+```
+Because the binding happens once in the `constructor`, that is better compared binding in the `render` method.
+
+4. Using an arrow function as a `class` property. Basically change the way you define your method in the class.
+```
+clickHandler = () => {
+        this.setState({
+            message: 'Goodbye my friend!'
+        });
+}
+```
+
+React documentations suggest either approach **3** or **4**.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
