@@ -563,7 +563,7 @@ class EventBind extends Component {
 ```
 Because the binding happens once in the `constructor`, that is better compared binding in the `render` method.
 
-4. Using an arrow function as a `class` property. Basically change the way you define your method in the class.
+4. Using an arrow function as a `class` property. Basically change the way you define your method in the class. This approach is also the most optimal one.
 ```
 clickHandler = () => {
         this.setState({
