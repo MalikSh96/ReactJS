@@ -574,6 +574,168 @@ clickHandler = () => {
 
 React documentations suggest either approach **3** or **4**.
 
+# LESSON 15
+# Methods as Props
+If you want a child component to communicate with a parent component, you also use **props**. And this time you pass in a reference to a method as props to the child component.
+
+We have created to new components `ParentComponent.js` and `ChildComponent.js`. What we want is when we click on the button in the child component (`ChildComponent.js`) we want to execute the method defined in the parent component (`ParentComponent.js`). Basically a child component calls a parent components method, which is achieved using props.
+
+The only difference this time is that we pass the method itself as a prop to the child component.
+
+**`ParentComponent.js`**
+```
+import React, { Component } from 'react'
+import ChildComponent from './ChildComponent';
+
+class ParentComponent extends Component {
+
+    constructor(props) {
+        super(props);
+    
+        this.state = {
+             parentName: 'Parent'
+        }
+
+        //binding the method, since we are using the 'this' keyword in the (greetParent) method
+        this.greetParent = this.greetParent.bind(this);
+    }
+    
+    greetParent(){
+        //`` <-- template literals. `` and ${} is a feature in ES6 and not a feature specific to React
+        alert(`Hello ${this.state.parentName}`);
+    }
+
+    render() {
+        return (
+            <div>
+                {/* 
+                We are passing a reference to the greetParent method as a prop called greetHandler
+                Therefore we omit () after greetParent
+                */}
+                <ChildComponent greetHandler={this.greetParent}/>
+            </div>
+        )
+    }
+}
+
+export default ParentComponent
+```
+
+**`ChildComponent.js`**
+```
+import React from 'react'
+
+function ChildComponent(props) {
+    return (
+        <div>
+            {/* 
+            We are grabbing reference of greetHandler from ParentComponent.js with 
+            the onClick={props.greetHandler}
+            */}
+            <button onClick={props.greetHandler}>Greet Parent</button>
+        </div>
+    )
+}
+
+export default ChildComponent
+```
+
+**All in all** in the parent component (`ParentComponent.js`) define the method, on the child component **`tag`** pass the method as a prop, in the child component (`ChildComponent.js`) access the method using the props object, ***if*** at all you have to pass a parameter use the **arrow function** syntax. 
+
+# LESSON 16
+# Conditional Rendering
+When you are building React applications you may often need to show or hide some html based on a certain condition. Conditional Rendering in React works the same way as conditions works in JavaScript.
+There are 4 different approaches for conditional rendering.
+
+1. if/else
+2. Element variables
+3. Ternary conditional operator 
+4. Short circuit operator
+
+**1. if/else**
+`UserGreeting.js`
+```
+render() {
+        if (this.state.isLoggedIn) {
+            return (
+                <div>Welcome Malik!</div> <--This is JSX, the return statement contains the JSX
+            )
+        }
+        else {
+            return (
+                <div>
+                    Welcome Guest! <-- -//-
+                </div>
+            )
+        }
+}
+```
+`if/else` statements **do not** work inside **JSX**, and that is because JSX is just syntactic sugar for function calls and object construction. Adding `if/else` statements within the JSX is not valid, and that is why the `if/else` statement(s) is outside the JSX.
+
+
+
+A better approach is approach number **2** of using **element variables**, in this approach you use JavaScript variables to store elements. This will also help you conditionally render the entire component, or only a part of the component as well.
+
+**2. Element variables**
+```
+render() {
+        let message;
+        if (this.state.isLoggedIn) {
+            message = <div>Welcome Malik!!</div>
+        }
+        else {
+            message = <div>Welcome Guest!!</div>
+        }
+        return <div>{message}</div>
+}
+```
+So `message` is the variable which stores the element to be rendered.
+
+
+
+Though approach **2** looks simple, approach **3** is even more simpler. The benefit of this approach is that it **can** be used inside the JSX. This is the approach you might want to follow most of the time as it keepts the code simple and readable.
+
+**3. Ternary conditional operator**
+```
+render() {
+        //3.
+        return (
+            /*
+            How this works is that the first operator (this.state.isLoggedIn) is 
+            evaluated to either true or false. If it is true the 2nd operator (Welcome Malik!!!)
+            is returned.
+            If the first operator turns out to be false, then the 3rd operator is returned 
+            (Welcome Guest!!!)
+            */
+            this.state.isLoggedIn ?
+                <div>Welcome Malik!!!</div> :
+                <div>Welcome Guest!!!</div>
+        )
+}
+```
+
+
+
+The 4th approach is just a specific case of the **ternary conditional operator** approach. When you want to render either something or nothing, you make use of the **short circuit operator**.
+
+**4. Short circuit operator**
+```
+render() {
+        //4. 
+        return(
+            /*
+            The expression first evaluates the left hand side of the operator (this.state.isLoggedIn)
+            and if it is true it ALSO evaluates the right hand side (Welome Malik!!!!)
+            However if it evaluates to false, then the right hand side will never be evaluated as
+            it doesn't affect the final value of the whole expression
+            */
+            this.state.isLoggedIn && <div>Welome Malik!!!!</div>
+        )
+}
+```
+
+**All in all** for most cases stick to either approach **3** or approach **4**, as they tend to be much more clean and readable.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
