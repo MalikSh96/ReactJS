@@ -736,6 +736,88 @@ render() {
 
 **All in all** for most cases stick to either approach **3** or approach **4**, as they tend to be much more clean and readable.
 
+# LESSON 17
+# List Rendering
+When you build applications a common scenario is to display a list of items, for example a list of names/products/courses etc.
+
+So what we want is to repeat html for ***each*** item in the list.
+
+`map()` method will be used to quickly iterate over each element in an array and return a **new** array with the desired changes applied.
+
+**`NameList.js`**
+```
+import React from 'react'
+
+function NameList() {
+    const names = ['Malik', 'Souheib', 'Mack'];
+    //we use the array.map syntax
+    const nameList = names.map(name => <h3>{name}</h3>) //once we start writing html we need to use {} to evaluate the javascript expression
+    return (
+        <div>
+            {nameList}
+        </div>
+    )
+}
+
+export default NameList;
+```
+^ is pretty simple
+
+Typically you are going to have a list of objects with a few properties that have to be rendered. In such cases it is **always** a good idea to refactor the jsx into a separate component and then use the component in the `map()` method jsx.
+
+**`NameList.js`**
+```
+const persons = [
+        {
+            id: 1,
+            name: 'Malik',
+            age: 24,
+            skill: 'Goalkeeping'
+        },
+        {
+            id: 2,
+            name: 'Souheib',
+            age: 24,
+            skill: 'Footballing'
+        },
+        {
+            id: 3,
+            name: 'Mack',
+            age: 24,
+            skill: 'Fighting in MMA'
+        }
+    ]
+
+    const personList = persons.map(person => <Person person={person} />);
+
+    return (
+        <div>
+            {personList}
+        </div>
+    )
+```
+
+**`Person.js`**
+```
+import React from 'react'
+
+//Destructuring the props right in the parameter
+function Person({person}) {
+    return (
+        <div>
+            <h3>I am {person.name}.
+                I am {person.age} years old.
+                I know {person.skill}.
+            </h3>
+        </div>
+    )
+}
+
+export default Person
+```
+
+This time we wrote better code. `NameList.js` component is only responsible for rendering the list and the `Person.js` component is only responsible for rendering the person html. This is also the pattern you commonly see when building web applications that render lists of data.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
