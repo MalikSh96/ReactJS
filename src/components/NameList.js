@@ -27,7 +27,7 @@ function NameList() {
 
     //we use the array.map syntax
     //const nameList = names.map(name => <h3>{name}</h3>) //once we start writing html we need to use {} to evaluate the javascript expression
-    const personList = persons.map(person => <Person person={person} />);
+    const personList = persons.map(person => <Person key={person.id} person={person} />);
 
     return (
         <div>

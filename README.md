@@ -818,6 +818,33 @@ export default Person
 
 This time we wrote better code. `NameList.js` component is only responsible for rendering the list and the `Person.js` component is only responsible for rendering the person html. This is also the pattern you commonly see when building web applications that render lists of data.
 
+# LESSON 18
+# Lists and Keys
+**Warning** in window console
+```
+index.js:1 Warning: Each child in a list should have a unique "key" prop.
+
+Check the render method of `NameList`. See https://reactjs.org/link/warning-keys for more information.
+    at Person (http://localhost:3000/static/js/main.chunk.js:1660:3)
+    at NameList
+    at div
+    at App
+```
+
+To handle the warning we will add a **`key`** prop and to the prop we need to assign a value that will be unique qithin the list.
+
+**`NameList.js`**
+
+`persons.map(person => <Person key={person.id} person={person} />);`
+
+So the **`key`** prop is a special that you need to include when creating lists of elements.
+
+An important note about `key` props is that they are not accessible in the child components, as trying to access a `key` prop will end up returning `undefined`. The `key` prop keyword is reserved and if you want to pass it down as a value to be used in the child component you should pass it down as a different prop.
+
+**Keys** help React identify which items in the list have updated/added/removed and plays a crucial role in handling UI updates efficiently.
+
+**All in all** a `key` is a special string attribute you need to include when creating lists of elements. `Keys` gives the elements a stable identity.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
