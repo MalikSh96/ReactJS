@@ -823,18 +823,11 @@ This time we wrote better code. `NameList.js` component is only responsible for 
 **Warning** in window console
 ```
 index.js:1 Warning: Each child in a list should have a unique "key" prop.
-
-Check the render method of `NameList`. See https://reactjs.org/link/warning-keys for more information.
-    at Person (http://localhost:3000/static/js/main.chunk.js:1660:3)
-    at NameList
-    at div
-    at App
 ```
 
 To handle the warning we will add a **`key`** prop and to the prop we need to assign a value that will be unique qithin the list.
 
 **`NameList.js`**
-
 `persons.map(person => <Person key={person.id} person={person} />);`
 
 So the **`key`** prop is a special that you need to include when creating lists of elements.
@@ -844,6 +837,24 @@ An important note about `key` props is that they are not accessible in the child
 **Keys** help React identify which items in the list have updated/added/removed and plays a crucial role in handling UI updates efficiently.
 
 **All in all** a `key` is a special string attribute you need to include when creating lists of elements. `Keys` gives the elements a stable identity.
+
+# LESSON 19
+# Index as Key Anti-pattern
+If we do not have an `id` that uniquely identifies each item in a list we can use the **index** value as a `key` when rendering the list. Because in that way every item in the list receives a unique value.
+
+**`NameList.js`**
+`const nameList = names.map((name, index) => <h3 key={index}>{index} {name}</h3>)`
+
+But using the **index** value as the `key` will cause some serious UI issues in certain scenarious. This could for example mess up what **`key(s)`** your item **value(s)** where assigned to at the beginning, and therefore messing the order of your list.
+
+You **can** use the `index` as a `key` provided your list satisfies certain conditions:
+1. The items in your list do **not** have an unique id.
+2. The list is a static list and will **not** change. (ex. never adding/removing items from the list)
+3. The list will **never** be reordered/filtered. (ex. sorting based on column value or filter based on user input)
+
+If your list satisfies **all** 3 of the conditions then you can use `index` as a `key`. If not you can try one of the **npm** packages that generates a unique id for a list or try hashing out a unique value from one of the existing properties.
+
+**All in all** do try and avoid using `index` as a `key` though.
 
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
