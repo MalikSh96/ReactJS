@@ -856,6 +856,25 @@ If your list satisfies **all** 3 of the conditions then you can use `index` as a
 
 **All in all** do try and avoid using `index` as a `key` though.
 
+# LESSON 20
+# Styling and CSS Basics
+There are a couple of options to style a React component.
+
+1. CSS Stylesheets
+2. Inline styling
+3. CSS Modules
+4. CSS in JS Libraries which works really well with React (Styled Components recommended)
+
+**OBS** for option **3** there is a filenaming convention to be used for css modules with `create-react-app`, the `filename` must be suffixed with `.module.css`.
+***Ex***:
+```
+src\appStyles.css
+
+src\components\appStyles.module.css
+```
+
+An advantage of using option **3** is that the classes are locally scoped by default.
+
 # ReactJS_Tutorial
 # --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
