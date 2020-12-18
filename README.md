@@ -1,8 +1,7 @@
 # ReactJS for Beginners
-Go to this [folder](https://github.com/MalikSh96/ReactJS_Tutorial/tree/main/lesson-notes)
+Go to this [folder](https://github.com/MalikSh96/ReactJS_Tutorial/tree/main/lesson-notes) for specific notes about **each** lesson.
 
 # ReactJS_Tutorial
-# --------------------------------------------------------------------------------------------------------------------------------
 # Initialized readme content from Create-React-App
 
 # Getting Started with Create React App
