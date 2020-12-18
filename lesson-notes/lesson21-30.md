@@ -37,3 +37,33 @@ For **error handling** phase you have 2 methods, ***static getDerivedStateFromEr
 Knowing **when** to use **each** lifecycle method is crucial to properly understanding how to work with React.
 
 **Obs!** These methods do **not** exist on a **functional component**.
+
+# LESSON 23
+# Component Mounting Lifecycle Methods
+Order of their invocation:
+1. Constructor(props)
+
+A special function that will get called whenever a new component is created. The constructor is used to initialize the `state` or binding the event handlers to the class instance. In a constructor do **not** cause side effects, for example http requests (ajax calls), **never** do that. In your constructor you have to keep 2 important points to keep in mind when it comes to defining your own constructor. 
+
+The **1st** point is that you have to call a special function called `super(props)`, this will call the base class constructor. In the component you have access to `this.props` only after you have initially called `super(props)` and passing the `props` as an argument. The **2nd** point is that constructor is also the only place where you are expected to change or set the `state` by directly overwriting `this.state` fields, in all other scenarios you **have** to use `this.setState`.
+
+2. static getDerivedStateFromProps(props, state)
+
+Is in the React docs classified as a rarly used method, this method is basically used when the state of the component depends on changes in props over time. Let's say you have a component with the initial state of the component depend on the props being passed to the component, in such a scenario you can use this method to set the state.
+
+Since this method is a `static` method it does not have access to the `this` keyword, so you can not call `this.setState` within this particular method. Instead you have to return an object that represents the new state of the component. Do not cause side effects, as stated above in the constructor part too.
+
+3. render()
+
+The `render()` method is the only required method in a class component, in the `render()` you simply read `this.props` and `this.state` and return the jsx which describes the UI. The `render()` is a pure function, for the given props and state, it should always render the same UI. What you should **not** do here is change the state or interact with DOM or make ajax calls.
+
+Since it is the render method jsx, which also contains the other children components, right after the parent render method the children components lifecycle methods are also executed.
+
+4. componentDidMount()
+
+This method will be called **only** once in the whole lifecycle of a given component and it is invoked immediately after a component and all its children components have been rendered to the DOM.
+
+This method is the **perfect** place to cause side effects, for example interacting with the DOM or perform any ajax calls to load data. So `componentDidMount()` is a good place to perform initialization that requires DOM nodes and also load data by making network requests.
+
+**See `LifecycleA.js`** and **`LifecycleB.js`**.
+
