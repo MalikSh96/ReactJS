@@ -67,3 +67,60 @@ This method is the **perfect** place to cause side effects, for example interact
 
 **See `LifecycleA.js`** and **`LifecycleB.js`**.
 
+# LESSON 24
+# Component Updating Lifecycle Methods
+Methods are called when a component is being re-rendered because of changes to props/state.
+
+There are a total of 5 methods, and out of the 5, 3 fall into the category of ***rarely*** used methods.
+
+Methods:
+1. `static getDerivedStateFromProps(props, state)`
+
+This method is called every time a component is re-rendered, and it is used to set the state. In this method you should not cause side effects, for example HTTP requests. This method is one of the rarely used methods in the updating phase.
+
+2. `shouldComponentUpdate(nextProps, nextState)`
+
+This method receives the updated props/state and the purpose of this method is clear from its name. It dictates if the component should re-render or not. By default all **class** components will re-render whenever the props they receive or their state changes. This method **can** prevent that default behaviour by returning `false`.
+
+You can use this method to compare the existing props/state values with the ***next*** props/state values and return `true` or `false` to let React know whether teh component should update or not.
+
+This method is basically for performance optimization. You should avoid causing side effects (http requests) or calling the `setState` method. This method is also classified as a rarely used lifecycle method in the official React documentation.
+
+3. `render()`
+
+Here you read `this.props` and `this.state` and return the jsx which describes the UI.
+
+Avoid changing the state or interacting with the DOM in this method.
+
+4. `getSnapshotBeforeUpdate(prevProps, prevState)`
+
+This method accepts previous props/state as its parameters and is called right before the changes from the virtual DOM are to be reflected in the DOM. This method is also classified as a rarely used lifecycle method in the official React documentation.
+
+You will use this method to capture some information from the DOM, for example you can read the users scrolled position and after the update maintain that scrolled position by performing some calculations.
+
+This method will either return `null` or a value. The returned value will be passe as the 3rd parameter to the next method.
+
+5. `componentDidUpdate(prevProps, prevState, snapshot)`
+
+This method will be called after the render is finished in the re-render cycles. This means that you can be sure the component and all its sub-components have properly rendered itself after the update. This method accepts 3 paramters, `prevProps`, `prevState` and the `snapshot` value returned from `getSnapshotBeforeUpdate(prevProps, prevState)` method.
+
+This method is guaranteed to be called only **once** in each re-render cycle, so what you **can** do with this is causing side effects (ajax calls). But before making `ajax` calls you need to compare the previous props with the new props and then decide whether to make the `ajax` calls or not. If you are **not** comparing you are making unwanted requests which is not really a good idea.
+
+**All in all** the `render()` and `componentDidUpdate()` are the more commonly used methods during the update lifecycle. The remaining 3 methods exist for special cases and should be used sparringly (with care). If you do decide to use the remaining 3, make sure you know what you are doing.
+
+**See `LifecycleA.js`** and **`LifecycleB.js`**.
+
+# Unmounting Phase Method
+The unmounting phase has just one method:
+
+- `componentWillUnmount()`
+
+This method is invoked immediately before a component is unmounted and destroyed. In this method you can perform some clean up tasks like cancelling any network requests, removing event handlers, cancelling any subscriptions and also invalidating timers from `setTimeout` or `setinterval`. Do **not** call the `setState` method in this method, and that is simply because the component is never re-rendered after it has been unmounted.
+
+# Error Handling Phase Methods
+This phase has 2 methods: 
+
+1. `static getDerivedStateFromError(error)`
+2. `componentDidCatch(error, info)`
+
+These 2 methods are called when there is an error either during rendering, in a lifecycle method, or in the constructor of any child component.
