@@ -124,3 +124,13 @@ This phase has 2 methods:
 2. `componentDidCatch(error, info)`
 
 These 2 methods are called when there is an error either during rendering, in a lifecycle method, or in the constructor of any child component.
+
+# LESSON 25
+# Fragments
+Fragments basically lets you group a list of children elements without adding extra nodes to the DOM.
+
+You can replace the `<div>` tags with `<React.Fragment>`.
+
+Fragments can accept the `key` attribute when rendering lists of items.
+
+Read more [here](https://reactjs.org/docs/fragments.html) about Fragments.
