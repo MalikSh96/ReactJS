@@ -133,4 +133,6 @@ You can replace the `<div>` tags with `<React.Fragment>`.
 
 Fragments can accept the `key` attribute when rendering lists of items.
 
+**See `Table.js` and `Columns.js`.
+
 Read more [here](https://reactjs.org/docs/fragments.html) about Fragments.
