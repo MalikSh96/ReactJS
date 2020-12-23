@@ -136,3 +136,50 @@ Fragments can accept the `key` attribute when rendering lists of items.
 **See `Table.js` and `Columns.js`.**
 
 Read more [here](https://reactjs.org/docs/fragments.html) about Fragments.
+
+# LESSON 26
+# Pure Components
+There is a 2nd way to create a **class** component, and that is by ***extending*** the **`PureComponent`** class from React.
+
+The difference between a **regular component** and a **pure component**:
+
+**Regular Component**:
+- A regular component does not implement the `shouldComponentUpdate` method. It always returns `true` by default.
+
+**Pure Component**:
+- A pure component on the other hand implements `shouldComponentUpdate` with a shallow props and state comparison.
+
+- It does a **shallow comparison (sc)** of `prevState` with `currentState` and a **sc** of `prevProps` with `currentProps`. And **only** when the **sc** indicates a difference the component will re-render.
+
+# Shallow Props and State Comparison
+We can study shallow comparison (**sc**) with respect to **primitive types** and **complex types**.
+
+For 2 **primitive types** like ***A*** and ***B***, like numbers, strings and boolean, **A** (**sc**) **B** returns true if **A** and **B** have the same value and are of the same type. 
+
+**Ex**:
+
+If both **A** and **B** are string `Malik` (sc) string `Malik`, the shallow comparison returns true.
+
+For **complex types** **A** (**sc**) **B** returns true if **A** and **B** reference the exact same object.
+
+**Ex**:
+```
+let a = [1, 2, 3];
+let b = [1, 2, 3];
+let c = a;
+
+let ab_equal = (a === b); //false
+let ac_equal = (a === c); //true
+```
+Even though the items in both array a and b are the same, those 2 arrays do **not** reference the same object. **a** (**sc**) **c** returns true though because they point to the same object. And it is the case with objects as well.
+
+# Why to use PureComponents
+Prevents unnecessary re-renders can give you a performance boost in certain scenarios. For example let's say you are rendering a list of 50 items, by not re-rendering them while it is **not** required you are going to have a good performance boost.
+
+A key point to keep in mind is that you should not mutate objects or arrays in props or state. For example if you need to add a new item to the list don't mutate it by pushing the item into the list, the reference to the array never changes and because pure components only check for that, the component will **not** re-render even though there is a difference. **Always** return a new object/array when dealing with pure components.
+
+**All in all** you can create a component by extending the PureComponent class. A PureComponent implements the `shouldComponentUpdate` lifecycle method by performing a shallow comparison on the props and state of the component. If there is no difference, the component is not re-rendered - thereby providing a performance boost. When you create a PureComponent it is a good idea to ensure that all the children components are also ***pure*** to avoid unexpected behaviour. Finally when you are using pure components **never** mutate the state, **always** return a new object that reflects the new state.
+
+Having all that discussed, it is probably more **safe** to use regular components most of the time unless of course you are seeing a performance ***hint*** in some components.
+
+***See `RegComp.js`, `PureComp.js` and `ParentComp.js`***.
