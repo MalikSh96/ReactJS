@@ -183,3 +183,13 @@ A key point to keep in mind is that you should not mutate objects or arrays in p
 Having all that discussed, it is probably more **safe** to use regular components most of the time unless of course you are seeing a performance ***hint*** in some components.
 
 ***See `RegComp.js`, `PureComp.js` and `ParentComp.js`***.
+
+# LESSON 27
+# Memo
+**PureComponents** only work with **class** based components.
+
+It would be nice to be able to achieve the same with **functional** components. This is where **`React.memo`** comes into the picture.
+
+What **PureComponents** is to class based components, **Memo** is to functional components.
+
+***See `MemoComp.js` and `ParentComp.js`***.
