@@ -193,3 +193,17 @@ It would be nice to be able to achieve the same with **functional** components. 
 What **PureComponents** is to class based components, **Memo** is to functional components.
 
 ***See `MemoComp.js` and `ParentComp.js`***.
+
+# LESSON 28
+# Refs
+Refs makes it possible to access DOM nodes directly within React.
+
+To create an **access refs** you can use the `createRef()` method, React also supports a 2nd way to set refs which is called as **callback refs**.
+
+The 2nd approach is a slightly older approach to creating refs.
+
+**All in all** with `createRef()` approach you create a reference using `React.createRef` and with callback ref approach you 1st create a property and then create a method that assigns the property with a DOM element passed as a parameter.
+In **createRef** approach you attach the reference to an element using the `ref` prop and assigning the property. In **callback ref** approach you attach the ref to an element using the method that in turn assigns the element to the property.
+Finally in **createRef** approach the element can be accessed using `this.referenceVariable.current` and in the **callback ref** approach it is directly accessed using `this.referenceVariable`.
+
+***See `RefsDemo.js`***.
