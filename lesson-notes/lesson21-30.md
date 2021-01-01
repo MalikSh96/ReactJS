@@ -207,3 +207,27 @@ In **createRef** approach you attach the reference to an element using the `ref`
 Finally in **createRef** approach the element can be accessed using `this.referenceVariable.current` and in the **callback ref** approach it is directly accessed using `this.referenceVariable`.
 
 ***See `RefsDemo.js`***.
+
+# LESSON 29
+# Refs with Class Components
+It is also possible to add **refs** to a class component. In special circumstances, if at all you need a ref to a child component from a parent component, know that it is definitely possible. The component however **has** to be a class component, **refs** can **not** be attached to functional components.
+
+***See `Input.js` and `FocusInput.js`***.
+
+# LESSON 30
+# Forwarding Refs
+**Ref forwarding** is a technique for automatically passing a ref through a component to one of its children.
+
+What we want to achieve here is when we click on the button in the parent component, the input in the child component should receive.
+
+We follow 4 steps:
+1. Create the ref in the parent component
+2. Attach the ref to the child component using the `ref` attribute 
+3. Forward the ref to the input element in the child component, and ref forwarding can be achieved using the `React.forwardRef('takes component as param')` from the React library
+4. Define the clickhandler in the parent component
+
+**All in all** the parent component creates a ref and the attaches it to the child component instance. The child component sees that ref and tells the parent that ***I am not the guy you are looking for, you want the native input element, right? Let me directly introduce him to you***. So the child component receives the ref from the parent component and attaches it to the native input element. Now the parent component can directly access this input element using `this.referenceVariable.current`, the child element is basically forwarding this reference. 
+
+**Obs** ref forwarding is something you are rarely going to use in your application, this might come in handy when you are working with some libraries or when you are dealing with higher order components. But it is a good idea to be aware of the different concepts in React.
+
+***See `FRInput.js` and `FRParentInput.js`***.
