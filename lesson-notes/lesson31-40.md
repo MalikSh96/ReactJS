@@ -17,4 +17,4 @@ What you should know about portals is, even though portals can be anywhere in th
 
 Check out also [this](https://codepen.io/gaearon/pen/jGBWpE) example.
 
-**See `PortalsDemo.js`**
+**See `PortalDemo.js`**
