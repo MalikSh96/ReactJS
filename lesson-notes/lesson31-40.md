@@ -16,3 +16,5 @@ Check out [this(https://codesandbox.io/s/00254q4n6p) example.
 What you should know about portals is, even though portals can be anywhere in the DOM tree, it behaves like a normal React child in every other way. This includes ***event-bubbling***. So an event fired from inside the portal will propagate to ancestors in the ***containing*** React tree, even if those elements are **not** ancestors in the DOM tree.
 
 Check out also [this(https://codepen.io/gaearon/pen/jGBWpE) example.
+
+**See `PortalsDemo.js`**
