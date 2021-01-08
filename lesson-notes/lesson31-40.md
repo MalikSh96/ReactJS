@@ -39,3 +39,9 @@ The placement of the error boundary also matters as it controls if the entire ap
 Error boundaries basically provides a way to gracefully handle error in the application code.
 
 **See `ErrorBoundary.js` and `Hero.js`**
+
+# LESSON 33
+# Higher Order Components, part 1
+There is a need to share common functionality between components without repeating code, and that is where the concept of **higher order components** comes into the picture.
+
+**See upcoming lesson(s), `ClickCounter.js` and `HoverCounter.js`**
